@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import hautc.study.politicalprepareness.R
+import hautc.study.politicalprepareness.databinding.FragmentElectionBinding
 
 class ElectionsFragment: Fragment() {
 
@@ -24,7 +25,7 @@ class ElectionsFragment: Fragment() {
         //TODO: Initiate recycler adapters
 
         //TODO: Populate recycler adapters
-        return View.inflate(context, R.layout.fragment_election, container)
+        return FragmentElectionBinding.inflate(inflater).root
     }
 
     //TODO: Refresh adapters when fragment loads
