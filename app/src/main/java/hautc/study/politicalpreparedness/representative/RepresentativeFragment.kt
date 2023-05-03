@@ -2,7 +2,7 @@ package hautc.study.politicalpreparedness.representative
 
 import androidx.fragment.app.Fragment
 
-class DetailFragment : Fragment() {
+class RepresentativeFragment : Fragment() {
 
 //    companion object {
 //        //TODO: Add Constant for Location request

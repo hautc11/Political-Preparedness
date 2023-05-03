@@ -5,7 +5,7 @@ import hautc.study.politicalpreparedness.network.models.ElectionOfficial
 import hautc.study.politicalpreparedness.network.models.State
 
 class VoterInfoResponse (
-	val election: Election,
+	val election: Election? = null,
 	val pollingLocations: String? = null,
 	val contests: String? = null,
 	val state: List<State>? = null,

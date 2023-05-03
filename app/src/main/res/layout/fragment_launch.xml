@@ -6,29 +6,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- TODO: Add image for home screen logo. -->
-
-        <!-- TODO: Add Button to navigate to upcoming elections. -->
-        <Button
-            android:id="@+id/representativeButton"
+        <ImageView
+            android:id="@+id/iv_ballot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Rep"
+            android:layout_marginTop="100dp"
+            android:contentDescription="@string/ballot_logo_description"
+            android:src="@drawable/ballot_logo"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/upcomingButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnUpcomingElections"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Up"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="@id/representativeButton"
-            app:layout_constraintTop_toBottomOf="@id/representativeButton" />
-        <!-- TODO: Add Button to navigate to representatives. -->
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/upcoming_elections"
+            app:layout_constraintBottom_toTopOf="@id/btnFindMyRepresentatives"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnFindMyRepresentatives"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/find_my_representatives"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnUpcomingElections"
+            app:layout_constraintStart_toStartOf="@id/btnUpcomingElections" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

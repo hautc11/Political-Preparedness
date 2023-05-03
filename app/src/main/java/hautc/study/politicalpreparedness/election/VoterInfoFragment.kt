@@ -1,33 +1,87 @@
 package hautc.study.politicalpreparedness.election
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import hautc.study.politicalpreparedness.database.ElectionDatabase
+import hautc.study.politicalpreparedness.repository.PoliticalPreparednessRepository
 import hautc.study.politicalprepareness.R
+import hautc.study.politicalprepareness.databinding.FragmentVoterInfoBinding
 
 class VoterInfoFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+	private lateinit var binding: FragmentVoterInfoBinding
 
-        //TODO: Add ViewModel values and create ViewModel
+	private val args: VoterInfoFragmentArgs by navArgs()
 
-        //TODO: Add binding values
+	private val viewModel: VoterInfoViewModel by lazy {
+		val database = ElectionDatabase.getInstance(requireContext())
+		val repository = PoliticalPreparednessRepository(database)
+		ViewModelProvider(this, VoterInfoViewModelFactory(repository))[VoterInfoViewModel::class.java]
+	}
 
-        //TODO: Populate voter info -- hide views without provided data.
-        /**
-        Hint: You will need to ensure proper data is provided from previous fragment.
-        */
+	override fun onCreateView(
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+		binding = FragmentVoterInfoBinding.inflate(inflater)
 
+		viewModel.getVoterInfo(args.electionId, args.stateAndCountry)
+		return binding.root
+	}
 
-        //TODO: Handle loading of URLs
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		initObserve()
+	}
 
-        //TODO: Handle save button UI state
-        //TODO: cont'd Handle save button clicks
-        return View.inflate(context, R.layout.fragment_election, container)
-    }
+	private fun initObserve() {
+		viewModel.voterInfo.observe(viewLifecycleOwner) { voteInfo ->
+			if (voteInfo?.election == null) {
+				binding.groupView.isVisible = false
+				binding.tvError.isVisible = true
+				binding.btnFollowElection.run {
+					text = getString(R.string.back)
+					setOnClickListener {
+						findNavController().popBackStack()
+					}
+				}
+			} else {
+				binding.groupView.isVisible = true
+				binding.electionDate.text = voteInfo.election.electionDay.toString()
+				binding.electionName.title = voteInfo.election.name
+				binding.stateLocations.setOnClickListener {
+					voteInfo.state?.firstOrNull()?.electionAdministrationBody?.votingLocationFinderUrl?.let {
+						openBrowser(it)
+					}
+				}
+				binding.stateBallot.setOnClickListener {
+					voteInfo.state?.firstOrNull()?.electionAdministrationBody?.ballotInfoUrl?.let {
+						openBrowser(it)
+					}
+				}
+				binding.btnFollowElection.run {
+					text = getString(R.string.follow_election)
+					setOnClickListener {
+						//TODO
+					}
+				}
+			}
+		}
+	}
 
-    //TODO: Create method to load URL intents
-
+	private fun openBrowser(url: String) {
+		val intent = Intent(Intent.ACTION_VIEW)
+		intent.data = Uri.parse(url)
+		startActivity(intent)
+	}
 }

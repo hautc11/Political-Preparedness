@@ -3,8 +3,10 @@ package hautc.study.politicalpreparedness.representative.adapter
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
+import java.util.Date
 
 @BindingAdapter("profileImage")
 fun fetchImage(view: ImageView, src: String?) {
@@ -24,6 +26,12 @@ fun Spinner.setNewValue(value: String?) {
     if (position >= 0) {
         setSelection(position)
     }
+}
+
+@BindingAdapter("electionDateStr")
+fun bindElectionDayToStr(textView: TextView, date: Date) {
+    val context = textView.context
+    textView.text = date.toString()
 }
 
 inline fun <reified T> toTypedAdapter(adapter: ArrayAdapter<*>): ArrayAdapter<T>{

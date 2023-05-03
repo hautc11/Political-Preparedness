@@ -1,18 +1,54 @@
 package hautc.study.politicalpreparedness.election.adapter
 
-//class ElectionListAdapter(private val clickListener: ElectionListener): ListAdapter<Election, ElectionViewHolder>(ElectionDiffCallback()) {
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElectionViewHolder {
-//        return ElectionViewHolder.from(parent)
-//    }
-//
-//    //TODO: Bind ViewHolder
-//
-//    //TODO: Add companion object to inflate ViewHolder (from)
-//}
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import hautc.study.politicalpreparedness.network.models.Election
+import hautc.study.politicalprepareness.databinding.ElectionItemLayoutBinding
 
-//TODO: Create ElectionViewHolder
+class ElectionListAdapter : ListAdapter<Election, ElectionListAdapter.ElectionViewHolder>(DiffCallback) {
 
-//TODO: Create ElectionDiffCallback
+	var onElectionItemClicked: (Election) -> Unit = {}
 
-//TODO: Create ElectionListener
+	class ElectionViewHolder(private val binding: ElectionItemLayoutBinding) :
+		RecyclerView.ViewHolder(binding.root) {
+
+		fun bind(item: Election) {
+			binding.election = item
+		}
+
+		companion object {
+			fun from(parent: ViewGroup): ElectionViewHolder {
+				val layoutInflater = LayoutInflater.from(parent.context)
+				val binding = ElectionItemLayoutBinding.inflate(layoutInflater, parent, false)
+				return ElectionViewHolder(binding)
+			}
+		}
+	}
+
+	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElectionViewHolder {
+		return ElectionViewHolder.from(parent)
+	}
+
+	override fun onBindViewHolder(holder: ElectionViewHolder, position: Int) {
+		val currentElection = getItem(position)
+		holder.bind(currentElection)
+		holder.itemView.setOnClickListener {
+			onElectionItemClicked.invoke(currentElection)
+		}
+	}
+
+	companion object {
+		object DiffCallback : DiffUtil.ItemCallback<Election>() {
+			override fun areItemsTheSame(oldItem: Election, newItem: Election): Boolean {
+				return oldItem === newItem
+			}
+
+			override fun areContentsTheSame(oldItem: Election, newItem: Election): Boolean {
+				return oldItem.ocdDivisionId == newItem.ocdDivisionId
+			}
+		}
+	}
+}
