@@ -4,11 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hautc.study.politicalpreparedness.database.ElectionDao
 import hautc.study.politicalpreparedness.network.models.Election
 import hautc.study.politicalpreparedness.network.response.VoterInfoResponse
 import hautc.study.politicalpreparedness.repository.PoliticalPreparednessRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class VoterInfoViewModel(
@@ -19,24 +17,41 @@ class VoterInfoViewModel(
 	val voterInfo: LiveData<VoterInfoResponse>
 		get() = _voterInfo
 
-	//TODO: Add live data to hold voter info
-
-	//TODO: Add var and methods to populate voter info
-
-	//TODO: Add var and methods to support loading URLs
-
-	//TODO: Add var and methods to save and remove elections to local database
-	//TODO: cont'd -- Populate initial state of save button to reflect proper action based on election saved status
+	private var _isFollowedByUser = MutableLiveData<Boolean>()
+	val isFollowedByUser: LiveData<Boolean>
+		get() = _isFollowedByUser
 
 	fun getVoterInfo(electionId: String, address: String) {
-		viewModelScope.launch(Dispatchers.IO) {
+		viewModelScope.launch {
 			val result = politicalPreparednessRepository.getVoterInfo(electionId, address)
-			_voterInfo.postValue(result)
+			_voterInfo.value = result
+			isCurrentElectionFollowedByUser()
 		}
 	}
 
-	/**
-	 * Hint: The saved state can be accomplished in multiple ways. It is directly related to how elections are saved/removed from the database.
-	 */
+	fun followElection(election: Election) {
+		viewModelScope.launch {
+			val result = politicalPreparednessRepository.followElection(election)
+			if (result.isSuccess) {
+				_isFollowedByUser.value = true
+			}
+		}
+	}
+
+	fun unFollowElection(electionId: String) {
+		viewModelScope.launch {
+			val result = politicalPreparednessRepository.unFollowElection(electionId)
+			if (result.isSuccess) {
+				_isFollowedByUser.value = false
+			}
+		}
+	}
+
+	private suspend fun isCurrentElectionFollowedByUser() {
+		val electionsInLocalDB = politicalPreparednessRepository.getSavedElections()
+		voterInfo.value?.election?.let { currentElection ->
+			_isFollowedByUser.value = electionsInLocalDB.any { it.id == currentElection.id }
+		}
+	}
 
 }

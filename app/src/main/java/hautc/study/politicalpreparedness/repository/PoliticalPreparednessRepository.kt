@@ -8,9 +8,7 @@ import hautc.study.politicalpreparedness.network.response.VoterInfoResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class PoliticalPreparednessRepository(
-	private val database: ElectionDatabase
-) {
+class PoliticalPreparednessRepository(private val database: ElectionDatabase) {
 
 	suspend fun getElections(): ElectionResponse {
 		return try {
@@ -34,7 +32,31 @@ class PoliticalPreparednessRepository(
 		}
 	}
 
-	suspend fun getSavedElections(): List<Election>{
-		return database.electionDao.getElection()
+	suspend fun followElection(election: Election): Result<Boolean> {
+		return try {
+			withContext(Dispatchers.IO) {
+				database.electionDao.insertElection(election)
+			}
+			Result.success(true)
+		} catch (e: Exception) {
+			Result.failure(e)
+		}
+	}
+
+	suspend fun unFollowElection(electionId: String): Result<Boolean> {
+		return try {
+			withContext(Dispatchers.IO) {
+				database.electionDao.deleteElectionById(electionId)
+			}
+			Result.success(true)
+		} catch (e: Exception) {
+			Result.failure(e)
+		}
+	}
+
+	suspend fun getSavedElections(): List<Election> {
+		return withContext(Dispatchers.IO) {
+			database.electionDao.getAllElection()
+		}
 	}
 }

@@ -13,13 +13,13 @@ interface ElectionDao {
 	suspend fun insertElection(election: Election)
 
 	@Query("SELECT * FROM election_table")
-	suspend fun getElection(): List<Election>
+	suspend fun getAllElection(): List<Election>
 
 	@Query("SELECT * FROM election_table where id = :id")
-	suspend fun getElectionById(id: Int): Election?
+	suspend fun getElectionById(id: String): Election?
 
 	@Query("DELETE FROM election_table WHERE id = :id")
-	suspend fun deleteElection(id: Int)
+	suspend fun deleteElectionById(id: String)
 
 	@Query("DELETE FROM election_table")
 	suspend fun deleteAllElections()

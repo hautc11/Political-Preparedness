@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -34,7 +35,6 @@ class VoterInfoFragment : Fragment() {
 		savedInstanceState: Bundle?
 	): View {
 		binding = FragmentVoterInfoBinding.inflate(inflater)
-
 		viewModel.getVoterInfo(args.electionId, args.stateAndCountry)
 		return binding.root
 	}
@@ -72,9 +72,23 @@ class VoterInfoFragment : Fragment() {
 				binding.btnFollowElection.run {
 					text = getString(R.string.follow_election)
 					setOnClickListener {
-						//TODO
+						if (text == getString(R.string.follow_election)) {
+							viewModel.followElection(voteInfo.election)
+							Toast.makeText(requireContext(), "Follow election success", Toast.LENGTH_SHORT).show()
+						} else if (text == getString(R.string.unfollow_election)) {
+							viewModel.unFollowElection(voteInfo.election.id)
+							Toast.makeText(requireContext(), "Unfollow election success", Toast.LENGTH_SHORT).show()
+						}
 					}
 				}
+			}
+		}
+
+		viewModel.isFollowedByUser.observe(viewLifecycleOwner) { isFollowed ->
+			if (isFollowed) {
+				binding.btnFollowElection.text = getString(R.string.unfollow_election)
+			} else {
+				binding.btnFollowElection.text = getString(R.string.follow_election)
 			}
 		}
 	}

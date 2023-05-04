@@ -43,11 +43,11 @@ class ElectionListAdapter : ListAdapter<Election, ElectionListAdapter.ElectionVi
 	companion object {
 		object DiffCallback : DiffUtil.ItemCallback<Election>() {
 			override fun areItemsTheSame(oldItem: Election, newItem: Election): Boolean {
-				return oldItem === newItem
+				return oldItem.id == newItem.id
 			}
 
 			override fun areContentsTheSame(oldItem: Election, newItem: Election): Boolean {
-				return oldItem.ocdDivisionId == newItem.ocdDivisionId
+				return oldItem == newItem
 			}
 		}
 	}

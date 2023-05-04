@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hautc.study.politicalpreparedness.network.models.Election
 import hautc.study.politicalpreparedness.repository.PoliticalPreparednessRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ElectionsViewModel(private val politicalPreparednessRepository: PoliticalPreparednessRepository) :
@@ -16,18 +15,21 @@ class ElectionsViewModel(private val politicalPreparednessRepository: PoliticalP
 	val upComingElections: LiveData<List<Election>>
 		get() = _upComingElections
 
-	//TODO: Create live data val for upcoming elections
-
-	//TODO: Create live data val for saved elections
-
-	//TODO: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
-
-	//TODO: Create functions to navigate to saved or upcoming election voter info
+	private var _savedElections = MutableLiveData<List<Election>>()
+	val savedElection: LiveData<List<Election>>
+		get() = _savedElections
 
 	fun getUpcomingElections() {
-		viewModelScope.launch(Dispatchers.IO) {
+		viewModelScope.launch {
 			val result = politicalPreparednessRepository.getElections()
-			_upComingElections.postValue(result.elections)
+			_upComingElections.value = result.elections
+		}
+	}
+
+	fun getSavedElections() {
+		viewModelScope.launch {
+			val result = politicalPreparednessRepository.getSavedElections()
+			_savedElections.value = result
 		}
 	}
 }

@@ -33,24 +33,22 @@ class ElectionsFragment: Fragment() {
         }
     }
 
-    private fun navigateToElectionDetailFragment(electionId: String, address: String) {
-        findNavController().navigate(ElectionsFragmentDirections.toVoterInfoFragment(electionId, address))
+        private val savedElectionAdapter by lazy {
+        ElectionListAdapter().apply {
+            onElectionItemClicked = {
+                navigateToElectionDetailFragment(it.id, it.getStateAndCountryStr())
+            }
+        }
     }
-
-//    private val savedElectionAdapter by lazy {
-//        ElectionListAdapter().apply {
-//            onElectionItemClicked = {
-//                Log.d("xxx", "selected: ${it.name}")
-//            }
-//        }
-//    }
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = FragmentElectionBinding.inflate(inflater)
         binding.rvUpcomingElections.adapter = upcomingElectionAdapter
+        binding.rvSavedElections.adapter = savedElectionAdapter
         viewModel.getUpcomingElections()
+        viewModel.getSavedElections()
         return binding.root
     }
 
@@ -64,7 +62,21 @@ class ElectionsFragment: Fragment() {
             if (it.isNullOrEmpty().not()) {
                 upcomingElectionAdapter.submitList(it)
                 binding.loadingIndicator.isVisible = false
+            } else {
+                upcomingElectionAdapter.submitList(emptyList())
+            }
+        }
+        viewModel.savedElection.observe(viewLifecycleOwner) {
+            if (it.isNullOrEmpty().not()) {
+                savedElectionAdapter.submitList(it)
+            } else {
+                savedElectionAdapter.submitList(emptyList())
             }
         }
     }
+
+    private fun navigateToElectionDetailFragment(electionId: String, address: String) {
+        findNavController().navigate(ElectionsFragmentDirections.toVoterInfoFragment(electionId, address))
+    }
+
 }
