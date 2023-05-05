@@ -12,6 +12,18 @@
     <string name="follow_election">Follow Election</string>
     <string name="unfollow_election">Unfollow Election</string>
     <string name="back">Back</string>
+    <string name="representative_avatar">representative avatar</string>
+    <string name="open_twitter">Open twitter</string>
+    <string name="open_facebook">Open Facebook</string>
+    <string name="open_wiki">Open Wiki</string>
+    <string name="my_representatives">My Representatives</string>
+    <string name="use_my_location">Use my location</string>
+    <string name="representative_search">Representative Search</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="zip">Zip</string>
+    <string name="loading">Loading</string>
 
 
 </resources>

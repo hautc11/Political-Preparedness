@@ -45,8 +45,6 @@ class ElectionsFragment: Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = FragmentElectionBinding.inflate(inflater)
-        binding.rvUpcomingElections.adapter = upcomingElectionAdapter
-        binding.rvSavedElections.adapter = savedElectionAdapter
         viewModel.getUpcomingElections()
         viewModel.getSavedElections()
         return binding.root
@@ -54,6 +52,8 @@ class ElectionsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.rvUpcomingElections.adapter = upcomingElectionAdapter
+        binding.rvSavedElections.adapter = savedElectionAdapter
         initObserve()
     }
 

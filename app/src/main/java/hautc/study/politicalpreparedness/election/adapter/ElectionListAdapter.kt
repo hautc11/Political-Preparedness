@@ -12,6 +12,18 @@ class ElectionListAdapter : ListAdapter<Election, ElectionListAdapter.ElectionVi
 
 	var onElectionItemClicked: (Election) -> Unit = {}
 
+	override fun onBindViewHolder(holder: ElectionViewHolder, position: Int) {
+		val currentElection = getItem(position)
+		holder.bind(currentElection)
+		holder.itemView.setOnClickListener {
+			onElectionItemClicked.invoke(currentElection)
+		}
+	}
+
+	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElectionViewHolder {
+		return ElectionViewHolder.from(parent)
+	}
+
 	class ElectionViewHolder(private val binding: ElectionItemLayoutBinding) :
 		RecyclerView.ViewHolder(binding.root) {
 
@@ -25,18 +37,6 @@ class ElectionListAdapter : ListAdapter<Election, ElectionListAdapter.ElectionVi
 				val binding = ElectionItemLayoutBinding.inflate(layoutInflater, parent, false)
 				return ElectionViewHolder(binding)
 			}
-		}
-	}
-
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElectionViewHolder {
-		return ElectionViewHolder.from(parent)
-	}
-
-	override fun onBindViewHolder(holder: ElectionViewHolder, position: Int) {
-		val currentElection = getItem(position)
-		holder.bind(currentElection)
-		holder.itemView.setOnClickListener {
-			onElectionItemClicked.invoke(currentElection)
 		}
 	}
 

@@ -4,6 +4,7 @@ import hautc.study.politicalpreparedness.database.ElectionDatabase
 import hautc.study.politicalpreparedness.network.NetworkProvider
 import hautc.study.politicalpreparedness.network.models.Election
 import hautc.study.politicalpreparedness.network.response.ElectionResponse
+import hautc.study.politicalpreparedness.network.response.RepresentativeResponse
 import hautc.study.politicalpreparedness.network.response.VoterInfoResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -57,6 +58,12 @@ class PoliticalPreparednessRepository(private val database: ElectionDatabase) {
 	suspend fun getSavedElections(): List<Election> {
 		return withContext(Dispatchers.IO) {
 			database.electionDao.getAllElection()
+		}
+	}
+
+	suspend fun getRepresentativesByAddress(address: String): RepresentativeResponse {
+		return withContext(Dispatchers.IO) {
+			NetworkProvider.civicsApiService.getRepresentatives(address)
 		}
 	}
 }

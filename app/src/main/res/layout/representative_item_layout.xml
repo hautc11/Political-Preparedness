@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="representative"
+            type="hautc.study.politicalpreparedness.representative.model.Representative" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivRepresentativeAvatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/representative_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:profileImage="@{representative.official.photoUrl}"
+            tools:src="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/tvOfficeName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{representative.office.name}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivRepresentativeAvatar"
+            app:layout_constraintTop_toTopOf="@id/ivRepresentativeAvatar"
+            tools:text="President of US" />
+
+        <TextView
+            android:id="@+id/tvRepresentativeName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{representative.official.name}"
+            app:layout_constraintEnd_toEndOf="@id/tvOfficeName"
+            app:layout_constraintStart_toEndOf="@id/ivRepresentativeAvatar"
+            app:layout_constraintStart_toStartOf="@id/tvOfficeName"
+            app:layout_constraintTop_toBottomOf="@id/tvOfficeName"
+            tools:text="Donald Trump" />
+
+        <TextView
+            android:id="@+id/tvOfficialParty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{representative.official.party}"
+            app:layout_constraintEnd_toEndOf="@id/tvOfficeName"
+            app:layout_constraintStart_toEndOf="@id/ivRepresentativeAvatar"
+            app:layout_constraintStart_toStartOf="@id/tvRepresentativeName"
+            app:layout_constraintTop_toBottomOf="@id/tvRepresentativeName"
+            tools:text="Democratic Party" />
+
+        <ImageView
+            android:id="@+id/twitterIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/open_twitter"
+            android:src="@drawable/ic_twitter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOfficialParty"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/facebookIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/open_facebook"
+            android:src="@drawable/ic_facebook"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/twitterIcon"
+            app:layout_constraintTop_toBottomOf="@id/tvOfficialParty"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/wwwIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/open_wiki"
+            android:src="@drawable/ic_www"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/facebookIcon"
+            app:layout_constraintTop_toBottomOf="@id/tvOfficialParty"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

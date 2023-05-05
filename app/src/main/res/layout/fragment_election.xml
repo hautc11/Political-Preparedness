@@ -63,16 +63,17 @@
                 tools:itemCount="1"
                 tools:listitem="@layout/election_item_layout" />
 
-            <ProgressBar
+            <ImageView
                 android:id="@+id/loading_indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/loading_animation"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/loading" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/centerOfScreen"

@@ -5,7 +5,7 @@ import hautc.study.politicalpreparedness.representative.model.Representative
 
 data class Office (
 	val name: String,
-	@SerializedName("divisionId") val division: Division,
+	@SerializedName("divisionId") val division: String,
 	@SerializedName("officialIndices") val officials: List<Int>
 ) {
     fun getRepresentatives(officials: List<Official>): List<Representative> {
