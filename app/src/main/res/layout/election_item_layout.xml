@@ -16,10 +16,10 @@
 
         <TextView
             android:id="@+id/tvElectionName"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/w_h_0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_padding_16dp"
             android:text="@{election.name}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,9 +29,9 @@
 
         <TextView
             android:id="@+id/tvElectionDay"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/w_h_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/margin_padding_4dp"
             app:electionDateStr="@{election.electionDay}"
             app:layout_constraintEnd_toEndOf="@+id/tvElectionName"
             app:layout_constraintStart_toStartOf="@id/tvElectionName"

@@ -10,7 +10,7 @@
             android:id="@+id/iv_ballot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="@dimen/margin_padding_100dp"
             android:contentDescription="@string/ballot_logo_description"
             android:src="@drawable/ballot_logo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -19,9 +19,9 @@
 
         <Button
             android:id="@+id/btnUpcomingElections"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/w_h_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/margin_padding_16dp"
             android:text="@string/upcoming_elections"
             app:layout_constraintBottom_toTopOf="@id/btnFindMyRepresentatives"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,10 +29,10 @@
 
         <Button
             android:id="@+id/btnFindMyRepresentatives"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/w_h_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/margin_padding_20dp"
             android:text="@string/find_my_representatives"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/btnUpcomingElections"

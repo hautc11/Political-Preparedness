@@ -20,10 +20,10 @@
             android:id="@+id/search_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/margin_padding_16dp"
+            android:layout_marginTop="@dimen/margin_padding_16dp"
             android:text="@string/representative_search"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
             android:id="@+id/address_line_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/margin_padding_16dp"
             android:autofillHints=""
             android:hint="@string/address_line_1"
             android:inputType="textPostalAddress"
@@ -44,8 +44,8 @@
         <EditText
             android:id="@+id/address_line_2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_height="@dimen/w_h_0dp"
+            android:layout_marginHorizontal="@dimen/margin_padding_16dp"
             android:autofillHints=""
             android:hint="@string/address_line_2"
             android:inputType="textPostalAddress"
@@ -55,9 +55,9 @@
 
         <EditText
             android:id="@+id/city"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/w_h_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_padding_16dp"
             android:autofillHints=""
             android:hint="@string/city"
             android:inputType="textPostalAddress"
@@ -68,9 +68,9 @@
 
         <Spinner
             android:id="@+id/state"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="@dimen/w_h_0dp"
+            android:layout_height="@dimen/w_h_0dp"
+            android:layout_marginEnd="@dimen/margin_padding_16dp"
             android:autofillHints=""
             android:entries="@array/states"
             android:inputType="textPostalAddress"
@@ -82,9 +82,9 @@
 
         <EditText
             android:id="@+id/zip"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/w_h_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_padding_16dp"
             android:autofillHints=""
             android:hint="@string/zip"
             android:inputType="number"
@@ -99,7 +99,7 @@
             android:id="@+id/button_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/margin_padding_16dp"
             android:text="@string/find_my_representatives"
             app:layout_constraintTop_toBottomOf="@id/zip" />
 
@@ -108,7 +108,7 @@
             android:id="@+id/button_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/margin_padding_16dp"
             android:text="@string/use_my_location"
             app:layout_constraintTop_toBottomOf="@id/button_search" />
 
@@ -117,10 +117,10 @@
             android:id="@+id/representative_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/margin_padding_16dp"
+            android:layout_marginTop="@dimen/margin_padding_16dp"
             android:text="@string/my_representatives"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_location" />
@@ -128,9 +128,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRepresentative"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="5dp"
+            android:layout_width="@dimen/w_h_0dp"
+            android:layout_height="@dimen/w_h_0dp"
+            android:layout_marginBottom="@dimen/margin_padding_4dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -142,7 +142,7 @@
         <TextView
             android:id="@+id/list_placeholder"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/w_h_0dp"
             android:gravity="center"
             android:textAlignment="center"
             android:visibility="gone"
@@ -152,8 +152,8 @@
 
         <ImageView
             android:id="@+id/loading_indicator"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/w_h_loading"
+            android:layout_height="@dimen/w_h_loading"
             android:contentDescription="@string/loading"
             android:src="@drawable/loading_animation"
             android:visibility="gone"

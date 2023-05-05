@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="representative"
             type="hautc.study.politicalpreparedness.representative.model.Representative" />
@@ -15,9 +16,9 @@
 
         <ImageView
             android:id="@+id/ivRepresentativeAvatar"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="16dp"
+            android:layout_width="@dimen/w_h_avatar"
+            android:layout_height="@dimen/w_h_avatar"
+            android:layout_margin="@dimen/margin_padding_16dp"
             android:contentDescription="@string/representative_avatar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -26,10 +27,10 @@
 
         <TextView
             android:id="@+id/tvOfficeName"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/w_h_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/margin_padding_10dp"
+            android:layout_marginEnd="@dimen/margin_padding_16dp"
             android:text="@{representative.office.name}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +40,7 @@
 
         <TextView
             android:id="@+id/tvRepresentativeName"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/w_h_0dp"
             android:layout_height="wrap_content"
             android:text="@{representative.official.name}"
             app:layout_constraintEnd_toEndOf="@id/tvOfficeName"
@@ -50,7 +51,7 @@
 
         <TextView
             android:id="@+id/tvOfficialParty"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/w_h_0dp"
             android:layout_height="wrap_content"
             android:text="@{representative.official.party}"
             app:layout_constraintEnd_toEndOf="@id/tvOfficeName"
@@ -61,22 +62,22 @@
 
         <ImageView
             android:id="@+id/twitterIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="@dimen/w_h_icon_social"
+            android:layout_height="@dimen/w_h_icon_social"
+            android:layout_marginEnd="@dimen/margin_padding_16dp"
             android:contentDescription="@string/open_twitter"
             android:src="@drawable/ic_twitter"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvOfficialParty"
             tools:visibility="visible" />
 
         <ImageView
             android:id="@+id/facebookIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="@dimen/w_h_icon_social"
+            android:layout_height="@dimen/w_h_icon_social"
+            android:layout_marginEnd="@dimen/margin_padding_10dp"
             android:contentDescription="@string/open_facebook"
             android:src="@drawable/ic_facebook"
             android:visibility="gone"
@@ -86,9 +87,9 @@
 
         <ImageView
             android:id="@+id/wwwIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="@dimen/w_h_icon_social"
+            android:layout_height="@dimen/w_h_icon_social"
+            android:layout_marginEnd="@dimen/margin_padding_10dp"
             android:contentDescription="@string/open_wiki"
             android:src="@drawable/ic_www"
             android:visibility="gone"

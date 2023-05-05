@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_padding">8dp</dimen>
+    <dimen name="margin_padding_16dp">16dp</dimen>
+    <dimen name="margin_padding_15dp">15dp</dimen>
+    <dimen name="margin_padding_20dp">20dp</dimen>
+    <dimen name="margin_padding_4dp">4dp</dimen>
+    <dimen name="margin_padding_10dp">10dp</dimen>
+    <dimen name="margin_padding_100dp">100dp</dimen>
 
-    <!-- TODO: Add necessary dimension values -->s
+    <dimen name="w_h_0dp">0dp</dimen>
+    <dimen name="w_h_loading">100dp</dimen>
+    <dimen name="w_h_avatar">60dp</dimen>
+    <dimen name="w_h_icon_social">40dp</dimen>
+
+    <dimen name="text_20sp">20sp</dimen>
+    <dimen name="text_16sp">16sp</dimen>
+
 
 </resources>
