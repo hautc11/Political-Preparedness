@@ -1,48 +1,16 @@
 # Project Title
 
-Project description goes here.
+Application that provides civic data intended to provide educational opportunities to the U.S. electorate using data provided by the Google Civic Information API.
 
 ## Getting Started
 
-Instructions for how to get a copy of the project running on your local machine.
+1. Clone source code.
+2. Sync gradle file.
+3. Press build button in `Android Studio`
 
 ### Dependencies
-
-```
-Examples here
-```
-
-### Installation
-
-Step by step explanation of how to get a dev environment running.
-
-List out the steps
-
-```
-Give an example here
-```
-
-## Testing
-
-Explain the steps needed to run any automated tests
-
-### Break Down Tests
-
-Explain what each test does and why
-
-```
-Examples here
-```
-## Project Instructions
-
-This section should contain all the student deliverables for this project.
-
-## Built With
-
-* [Item1](www.item1.com) - Description of item
-* [Item2](www.item2.com) - Description of item
-* [Item3](www.item3.com) - Description of item
-
-Include all items used to build project.
-
-## License
+1. `Retrofit2` - consume RESTful web service
+2. `Okhttp & Logging Interceptor` - logs HTTP request and response data
+3. `Navigation Component` - simplifies the implementation of navigation in an Android app
+4. `Coroutine & LiveData`
+5. `Room` - store local data
