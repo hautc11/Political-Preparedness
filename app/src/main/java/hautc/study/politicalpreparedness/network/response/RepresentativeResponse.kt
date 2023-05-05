@@ -4,6 +4,6 @@ import hautc.study.politicalpreparedness.network.models.Office
 import hautc.study.politicalpreparedness.network.models.Official
 
 data class RepresentativeResponse(
-	val offices: List<Office>,
-	val officials: List<Official>
+	val offices: List<Office> = listOf(),
+	val officials: List<Official> = listOf()
 )

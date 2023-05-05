@@ -25,6 +25,8 @@
     <string name="zip">Zip</string>
     <string name="loading">Loading</string>
     <string name="error_connection_occur">Error connection occur</string>
+    <string name="permission_denied">You need to enable location permission to use this function :)</string>
+    <string name="settings">Setting</string>
 
 
 </resources>

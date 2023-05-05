@@ -62,8 +62,12 @@ class PoliticalPreparednessRepository(private val database: ElectionDatabase) {
 	}
 
 	suspend fun getRepresentativesByAddress(address: String): RepresentativeResponse {
-		return withContext(Dispatchers.IO) {
-			NetworkProvider.civicsApiService.getRepresentatives(address)
+		return try {
+			withContext(Dispatchers.IO) {
+				NetworkProvider.civicsApiService.getRepresentatives(address)
+			}
+		} catch (e: java.lang.Exception) {
+			RepresentativeResponse()
 		}
 	}
 }

@@ -16,7 +16,7 @@ class RepresentativeViewModel(private val politicalPreparednessRepository: Polit
 	val representatives: LiveData<List<Representative>>
 		get() = _representatives
 
-	var userAddress: Address = Address()
+	var userAddress = MutableLiveData<Address>()
 
 	var currentSelectedStatePosition: Int = 1
 
