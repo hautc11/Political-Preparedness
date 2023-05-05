@@ -18,8 +18,6 @@ class RepresentativeViewModel(private val politicalPreparednessRepository: Polit
 
 	var userAddress = MutableLiveData<Address>()
 
-	var currentSelectedStatePosition: Int = 1
-
     fun getRepresentativeListByAddress(address: String) {
 		viewModelScope.launch {
 			val (offices, officials) = politicalPreparednessRepository.getRepresentativesByAddress(address)

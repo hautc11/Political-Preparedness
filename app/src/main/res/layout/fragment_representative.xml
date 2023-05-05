@@ -10,9 +10,11 @@
             type="hautc.study.politicalpreparedness.representative.RepresentativeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_representative_scene">
 
         <TextView
             android:id="@+id/search_title"
@@ -72,7 +74,6 @@
             android:autofillHints=""
             android:entries="@array/states"
             android:inputType="textPostalAddress"
-            android:selectedItemPosition="@={viewModel.currentSelectedStatePosition}"
             app:layout_constraintBottom_toBottomOf="@id/city"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/city"
@@ -172,5 +173,5 @@
             app:layout_constraintEnd_toEndOf="@id/rvRepresentative"
             app:layout_constraintStart_toStartOf="@id/rvRepresentative"
             app:layout_constraintTop_toTopOf="@id/rvRepresentative" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
