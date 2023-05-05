@@ -61,7 +61,7 @@ class RepresentativeFragment : Fragment() {
 				binding.loadingIndicator.isVisible = false
 				mAdapter.submitList(representatives)
 			} else {
-				//TODO
+				binding.ivErrorConnection.isVisible = true
 			}
 		}
 	}

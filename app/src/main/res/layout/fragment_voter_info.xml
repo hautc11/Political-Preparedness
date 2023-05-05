@@ -73,6 +73,17 @@
             android:text="@string/there_s_something_wrong_with_this_elections_please_try_again"
             android:textColor="@color/red"
             android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivErrorConnection" />
+
+        <ImageView
+            android:id="@+id/ivErrorConnection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/error_connection_occur"
+            android:src="@drawable/ic_connection_error"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

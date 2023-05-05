@@ -1,7 +1,6 @@
 package hautc.study.politicalpreparedness.election
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import hautc.study.politicalpreparedness.database.ElectionDatabase
 import hautc.study.politicalpreparedness.election.adapter.ElectionListAdapter
-import hautc.study.politicalpreparedness.network.models.Election
 import hautc.study.politicalpreparedness.repository.PoliticalPreparednessRepository
 import hautc.study.politicalprepareness.databinding.FragmentElectionBinding
 
@@ -63,7 +61,7 @@ class ElectionsFragment: Fragment() {
                 upcomingElectionAdapter.submitList(it)
                 binding.loadingIndicator.isVisible = false
             } else {
-                upcomingElectionAdapter.submitList(emptyList())
+                binding.ivErrorConnection.isVisible = true
             }
         }
         viewModel.savedElection.observe(viewLifecycleOwner) {

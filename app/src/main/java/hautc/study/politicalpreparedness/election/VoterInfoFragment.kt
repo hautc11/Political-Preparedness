@@ -49,6 +49,7 @@ class VoterInfoFragment : Fragment() {
 			if (voteInfo?.election == null) {
 				binding.groupView.isVisible = false
 				binding.tvError.isVisible = true
+				binding.ivErrorConnection.isVisible = true
 				binding.btnFollowElection.run {
 					text = getString(R.string.back)
 					setOnClickListener {
